@@ -9,8 +9,8 @@
             <i class="iconfont">&#xe632;</i>
             输入城市/景点/主题
         </section>
-        <section class="right">
-            城市
+        <section class="right" @click="$router.push('/city')">
+            莲湖
             <i class="iconfont arrow-down">&#xe6aa;</i>
         </section>
     </div>
