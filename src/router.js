@@ -11,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: ()=>import('@/views/home/Home')
+    },
+    {
+      path:'/',
+      name:'city',
+      components:()=>import('@/views/city/City')
     }
   ]
 })
