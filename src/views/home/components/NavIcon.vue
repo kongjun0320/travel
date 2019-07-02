@@ -15,55 +15,13 @@
 <script>
 export default {
     name:'NavIcon',
+    props:{
+        iconList:{
+            type:Array
+        }
+    },
     data(){
         return {
-            navList:[
-                {
-                    id:'001',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'002',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'北京动植物博物馆'
-                },
-                 {
-                    id:'003',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'004',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'005',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'006',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'007',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'008',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                },
-                 {
-                    id:'009',
-                    imgUrl:'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-                    desc:'故宫'
-                }
-            ],
              swiperOption: {
                 loop:true,
             }
@@ -72,7 +30,7 @@ export default {
     computed:{
         resultNavList(){
             let resultArr = []
-            this.navList.forEach((item,index)=>{
+            this.iconList.forEach((item,index)=>{
                 const page = Math.floor(index/8)
                 if(!resultArr[page]){
                     resultArr[page] = []
