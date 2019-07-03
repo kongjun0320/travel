@@ -7,12 +7,12 @@
             </section>
             <section class="area">
                 <header class="title">热门城市</header>
-                <button @click="changeCity(item.name)" v-for="(item) in hotCities" :key="item.id">{{ item.name }}</button>
+                <button @click="changeCityName(item.name)" v-for="(item) in hotCities" :key="item.id">{{ item.name }}</button>
             </section>
             <section class="area">
                 <ul v-for="(item,key) in cities" :key="key">
                     <li class="title" :ref="key">{{ key }}</li>
-                    <li class="border-bottom" v-for="(i) in item" :key="i.id" @click="changeCity(i.name)">{{ i.name }}</li>
+                    <li class="border-bottom" v-for="(i) in item" :key="i.id" @click="changeCityName(i.name)">{{ i.name }}</li>
                 </ul>
             </section>
        </div>
@@ -34,7 +34,7 @@ export default {
     },
     methods:{
         ...mapActions(['changeCity']),
-        changeCity(cityname){
+        changeCityName(cityname){
             this.changeCity(cityname)
             this.$router.push('/home')
         },

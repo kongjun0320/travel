@@ -13,6 +13,9 @@ import Sw from './components/Sw'
 import NavIcon from './components/NavIcon'
 import Recommend from './components/Recommend'
 import Weekend from './components/Weekend'
+
+import {mapState} from 'vuex'
+
 export default {
     name:'Home',
     data(){
@@ -20,7 +23,7 @@ export default {
             swiperList:[],
             iconList:[],
             recommendList:[],
-            weekendList:[]
+            weekendList:[],
         }
     },
     components:{
@@ -30,6 +33,9 @@ export default {
         Recommend,
         Weekend,  
     },
+    computed:{
+        ...mapState(['city'])
+    },  
     mounted(){
         this.$axios('/api/data.json')
         .then(response=>{
@@ -45,6 +51,7 @@ export default {
         .catch(error=>{
             console.log(error)
         })
+        this.lastCity = this.city
     }
 }
 </script>
