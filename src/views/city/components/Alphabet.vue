@@ -1,24 +1,22 @@
 <template>
     <div class="alphabet">
-        <span>A</span>
-        <span>A</span>
-        <span>A</span>
-        <span>A</span>
-        <span>A</span>
-        <span>A</span>
-        <span>A</span>
+        <span v-for="(item,key) of cities" :key="key">{{ key }}</span>
     </div>
 </template>
 <script>
 export default {
-    name:'Alphabet'
+    name:'Alphabet',
+    props:{
+        cities:{
+            type:Object
+        }
+    }
 }
 </script>
 <style lang="stylus" scoped>
     .alphabet 
         display flex
         flex-direction column
-        line-height .5rem
         justify-content center
         align-items center
         width .5rem

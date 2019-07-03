@@ -7,33 +7,12 @@
             </section>
             <section class="area">
                 <header class="title">热门城市</header>
-                <button>北京</button>
-                <button>北京</button>
-                <button>北京</button>
-                <button>北京</button>
-                <button>北京</button>
+                <button v-for="(item) in hotCities" :key="item.id">{{ item.name }}</button>
             </section>
             <section class="area">
-                <ul>
-                    <li class="title">A</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                </ul>
-                <ul>
-                    <li class="title">A</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                </ul>
-                <ul>
-                    <li class="title">A</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
-                    <li class="border-bottom">阿拉尔</li>
+                <ul v-for="(item,key) in cities" :key="key">
+                    <li class="title">{{ key }}</li>
+                    <li class="border-bottom" v-for="(i) in item" :key="i.id">{{ i.name }}</li>
                 </ul>
             </section>
        </div>
@@ -43,6 +22,14 @@
 import BScroll from '@better-scroll/core'   
 export default {
     name:'List',
+    props:{
+        hotCities:{
+            type:Array
+        },
+        cities:{
+            type:Object
+        }
+    },
     mounted(){
        this.scroll =  new BScroll(this.$refs.wrapper)
     }
