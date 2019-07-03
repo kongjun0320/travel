@@ -11,7 +11,7 @@
             </section>
             <section class="area">
                 <ul v-for="(item,key) in cities" :key="key">
-                    <li class="title">{{ key }}</li>
+                    <li class="title" :ref="key">{{ key }}</li>
                     <li class="border-bottom" v-for="(i) in item" :key="i.id">{{ i.name }}</li>
                 </ul>
             </section>
@@ -20,6 +20,7 @@
 </template>
 <script>
 import BScroll from '@better-scroll/core'   
+import PubSub from 'pubsub-js'
 export default {
     name:'List',
     props:{
@@ -32,6 +33,11 @@ export default {
     },
     mounted(){
        this.scroll =  new BScroll(this.$refs.wrapper)
+       PubSub.subscribe('changeLetter', (msg,data)=>{
+           const letter = data
+           const element = this.$refs[letter][0]
+           this.scroll.scrollToElement(element)
+       });
     }
 }
 </script>
