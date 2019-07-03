@@ -3,16 +3,16 @@
        <div>
             <section class="area">
                 <header class="title">当前城市</header>
-                <button class="border-topbottom">北京</button>
+                <button class="border-topbottom">{{ city }}</button>
             </section>
             <section class="area">
                 <header class="title">热门城市</header>
-                <button v-for="(item) in hotCities" :key="item.id">{{ item.name }}</button>
+                <button @click="changeCity(item.name)" v-for="(item) in hotCities" :key="item.id">{{ item.name }}</button>
             </section>
             <section class="area">
                 <ul v-for="(item,key) in cities" :key="key">
                     <li class="title" :ref="key">{{ key }}</li>
-                    <li class="border-bottom" v-for="(i) in item" :key="i.id">{{ i.name }}</li>
+                    <li class="border-bottom" v-for="(i) in item" :key="i.id" @click="changeCity(i.name)">{{ i.name }}</li>
                 </ul>
             </section>
        </div>
@@ -21,6 +21,7 @@
 <script>
 import BScroll from '@better-scroll/core'   
 import PubSub from 'pubsub-js'
+import {mapState,mapActions} from 'vuex'
 export default {
     name:'List',
     props:{
@@ -31,8 +32,20 @@ export default {
             type:Object
         }
     },
+    methods:{
+        ...mapActions(['changeCity']),
+        changeCity(cityname){
+            this.changeCity(cityname)
+            this.$router.push('/home')
+        },
+    },
+    computed:{
+        ...mapState(['city'])
+    },
     mounted(){
-       this.scroll =  new BScroll(this.$refs.wrapper)
+       this.scroll =  new BScroll(this.$refs.wrapper,{
+           click:true
+       })
        PubSub.subscribe('changeLetter', (msg,data)=>{
            const letter = data
            const element = this.$refs[letter][0]

@@ -10,14 +10,18 @@
             输入城市/景点/主题
         </section>
         <section class="right" @click="$router.push('/city')">
-            莲湖
+            {{ city }}
             <i class="iconfont arrow-down">&#xe6aa;</i>
         </section>
     </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
-    name:'Hh'
+    name:'Hh',
+    computed:{
+        ...mapState(['city'])
+    }
 }
 </script>
 <style lang="stylus" scoped>
