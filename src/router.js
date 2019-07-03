@@ -20,6 +20,11 @@ export default new Router({
       path:'/city',
       name:'city',
       component:()=>import('@/views/city/City')
+    },
+    {
+      path:'/detail',
+      name:'detail',
+      component:()=>import('@/views/detail/Detail')
     }
   ]
 })
