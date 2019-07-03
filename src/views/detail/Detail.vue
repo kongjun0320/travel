@@ -2,17 +2,53 @@
     <div class="detail">
         <Hh></Hh>
         <TopBar></TopBar>
-        <div class="c"></div>
+        <List :arrList="arrList"></List>
     </div>
 </template>
 <script>
 import Hh from './components/Hh'
 import TopBar from './components/TopBar'
+import List from './components/List'
 export default {
     name:'Detail',
     components:{
         Hh,
-        TopBar
+        TopBar,
+        List
+    },
+    data(){
+        return {
+              arrList:[
+                {
+                    title:'成人票',
+                    children:[
+                        {
+                            title:'成人三馆联票'
+                        },
+                         {
+                            title:'成人四馆联票'
+                        }
+                    ]
+                },
+                 {
+                    title:'学生票'
+                },
+                 {
+                    title:'儿童票',
+                    children:[
+                        {
+                            title:'成人三馆联票'
+                        },
+                         {
+                            title:'成人四馆联票'
+                        }
+                    ]
+                },
+                 {
+                    title:'特惠票'
+                }
+            ]
+        }
     }
 }
 </script>

@@ -20,8 +20,8 @@ export default {
             opacityClass:{opacity:0}
         }
     },
-    activated(){
-        window.addEventListener('scroll',()=>{
+    methods:{
+        scrollHandle(){
             const scrollTop = document.documentElement.scrollTop
             if(scrollTop>60){
                 let opacity = scrollTop/140
@@ -31,7 +31,13 @@ export default {
             }else{
                 this.isShow = true  
             }
-        })
+        }
+    },
+    activated(){ 
+        window.addEventListener('scroll',this.scrollHandle)
+    },
+    deactivated(){
+        window.removeEventListener('scroll',this.scrollHandle)
     }
 }
 </script>
