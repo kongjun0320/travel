@@ -13,9 +13,9 @@ export default new Router({
       component: ()=>import('@/views/home/Home')
     },
     {
-      path:'/',
+      path:'/city',
       name:'city',
-      components:()=>import('@/views/city/City')
+      component:()=>import('@/views/city/City')
     }
   ]
 })
